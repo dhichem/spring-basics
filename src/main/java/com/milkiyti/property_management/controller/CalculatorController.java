@@ -1,5 +1,8 @@
 package com.milkiyti.property_management.controller;
 
+import com.milkiyti.property_management.dto.CalculatorDTO;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,5 +20,12 @@ public class CalculatorController {
             return num2 - num1;
         else
             return num1 - num2;
+    }
+
+    @PostMapping("/multiply")
+    public ResponseEntity<Double> multiply(@RequestBody CalculatorDTO cl) {
+        Double result = cl.getNum1() * cl.getNum2() * cl.getNum3();
+        ResponseEntity<Double> responseEntity = new ResponseEntity<Double>(result, HttpStatusCode.valueOf(201));
+        return responseEntity;
     }
 }
