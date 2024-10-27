@@ -1,5 +1,6 @@
 package com.milkiyti.property_management.service.impl;
 
+import com.milkiyti.property_management.converter.PropertyConverter;
 import com.milkiyti.property_management.dto.PropertyDTO;
 import com.milkiyti.property_management.entity.PropertyEntity;
 import com.milkiyti.property_management.repository.PropertyRepository;
@@ -13,17 +14,12 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Autowired
     private PropertyRepository propertyRepository;
+    @Autowired
+    private PropertyConverter propertyConverter;
 
     @Override
     public PropertyDTO saveProperty(PropertyDTO propertyDTO) {
-        PropertyEntity pe = new PropertyEntity();
-        pe.setTitle(propertyDTO.getTitle());
-        pe.setDescription(propertyDTO.getDescription());
-        pe.setOwnerName(propertyDTO.getOwnerName());
-        pe.setOwnerEmail(propertyDTO.getOwnerEmail());
-        pe.setAddress(propertyDTO.getAddress());
-        pe.setPrice(propertyDTO.getPrice());
-        propertyRepository.save(pe);
+        propertyRepository.save(propertyConverter.convertDTOToEntity(propertyDTO));
         return null;
     }
 }
