@@ -17,4 +17,17 @@ public class PropertyConverter {
 
         return pe;
     }
+
+    public PropertyDTO convertEntityToDTO(PropertyEntity pe) {
+        PropertyDTO pd = new PropertyDTO();
+        pd.setId(pe.getId());
+        pd.setTitle(pe.getTitle());
+        pd.setDescription(pe.getDescription());
+        pd.setOwnerName(pe.getOwnerName());
+        pd.setOwnerEmail(pe.getOwnerEmail());
+        pd.setAddress(pe.getAddress());
+        pd.setPrice(pe.getPrice());
+
+        return pd;
+    }
 }
