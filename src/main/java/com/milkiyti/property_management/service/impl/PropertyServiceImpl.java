@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 // by using "service" (it can be component, repository, ...) we're making this serivce implementation class a singelton
@@ -34,5 +35,27 @@ public class PropertyServiceImpl implements PropertyService {
             listPd.add(propertyConverter.convertEntityToDTO(pe));
         }
         return  listPd;
+    }
+
+    @Override
+    public PropertyDTO updateProperty(PropertyDTO pd, Long propertyId) {
+        Optional<PropertyEntity> optEntity = propertyRepository.findById(propertyId);
+        if (optEntity.isPresent()) {
+            PropertyEntity pe = optEntity.get();
+            pe.setTitle(pd.getTitle());
+            pe.setDescription(pd.getDescription());
+            pe.setOwnerName(pd.getOwnerName());
+            pe.setOwnerEmail(pd.getOwnerEmail());
+            pe.setAddress(pd.getAddress());
+            pe.setPrice(pd.getPrice());
+
+            return propertyConverter.convertEntityToDTO(propertyRepository.save(pe));
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteProperty(Long id) {
+        propertyRepository.deleteById(id);
     }
 }

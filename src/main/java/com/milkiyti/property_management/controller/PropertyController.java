@@ -34,4 +34,22 @@ public class PropertyController {
         ResponseEntity<List<PropertyDTO>> responseEntity = new ResponseEntity<>(listPd, HttpStatus.OK);
         return responseEntity;
     }
+
+    @PutMapping("/{id}/update")
+    public ResponseEntity<PropertyDTO> updateProperty(@RequestBody PropertyDTO propertyDTO, @PathVariable Long id) {
+        PropertyDTO pd = propertyService.updateProperty(propertyDTO, id);
+        ResponseEntity<PropertyDTO> responseEntity;
+        if(pd != null)
+            responseEntity = new ResponseEntity<>(pd, HttpStatus.OK);
+        else
+            responseEntity = new ResponseEntity<>(pd, HttpStatus.NOT_FOUND);
+        return responseEntity;
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteProperty(@PathVariable Long id) {
+        propertyService.deleteProperty(id);
+        ResponseEntity<String> responseEntity = new ResponseEntity<>("Delete Success", HttpStatus.OK);
+        return responseEntity;
+    }
 }
