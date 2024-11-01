@@ -3,6 +3,7 @@ package com.milkiyti.property_management.controller;
 import com.milkiyti.property_management.dto.PropertyDTO;
 import com.milkiyti.property_management.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,12 @@ public class PropertyController {
     @Autowired
     public PropertyService propertyService;
 
+    @Value("${test.var2:}")
+    private String testVar;
+
     @GetMapping("/hello")
     public String printHello() {
-        return "Hello";
+        return testVar;
     }
 
     @PostMapping()
