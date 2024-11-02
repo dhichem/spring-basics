@@ -44,8 +44,6 @@ public class PropertyServiceImpl implements PropertyService {
             PropertyEntity pe = optEntity.get();
             pe.setTitle(pd.getTitle());
             pe.setDescription(pd.getDescription());
-            pe.setOwnerName(pd.getOwnerName());
-            pe.setOwnerEmail(pd.getOwnerEmail());
             pe.setAddress(pd.getAddress());
             pe.setPrice(pd.getPrice());
 
