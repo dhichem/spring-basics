@@ -23,6 +23,7 @@ public class PropertyConverter {
         pd.setDescription(pe.getDescription());
         pd.setAddress(pe.getAddress());
         pd.setPrice(pe.getPrice());
+        pd.setUserId(pe.getUserEntity().getId());
 
         return pd;
     }
