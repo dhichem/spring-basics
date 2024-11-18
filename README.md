@@ -44,9 +44,9 @@ This project is a foundational Spring-based application aimed at understanding c
 ## Getting Started
 
 ### Prerequisites
-- JDK 17 or higher
+- JDK 17 or higher (here jdk 17)
 - Maven 3.8+
-- An SQL database (e.g., MySQL, PostgreSQL)
+- An SQL database (e.g., MySQL, PostgreSQL) (here it's MySQL)
 
 ### Running the Project
 1. Clone the repository.
